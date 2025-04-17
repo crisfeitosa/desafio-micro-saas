@@ -1,7 +1,13 @@
 import { handleAuth } from "@/app/actions/handle-auth";
 import { auth } from "@/app/lib/auth";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'Dashboard',
+}
 
 export default async function Dashboard() {
   // Estamos no lado do servidor!!!
