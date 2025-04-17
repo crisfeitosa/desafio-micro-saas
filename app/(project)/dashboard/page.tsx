@@ -1,6 +1,7 @@
 import { handleAuth } from "@/app/actions/handle-auth";
 import { auth } from "@/app/lib/auth";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function Dashboard() {
   // Estamos no lado do servidor!!!
@@ -16,11 +17,14 @@ export default async function Dashboard() {
       <p>{session?.user?.email ? session.user.email : "Usuário não está logado!!!"}</p>
 
       {session?.user?.email && (
-        <form action={handleAuth}>
-          <button type="submit" className="border rounded-md px-4 py-2 cursor-pointer">
-            Logout
-          </button>
-        </form>
+        <>
+          <form action={handleAuth}>
+            <button type="submit" className="border rounded-md px-4 py-2 cursor-pointer">
+              Logout
+            </button>
+          </form>
+          <Link href="/pagamentos" className="border rounded-md px-4 py-2 cursor-pointer">Pagamentos</Link>
+        </>
       )}
     </div>
   );
